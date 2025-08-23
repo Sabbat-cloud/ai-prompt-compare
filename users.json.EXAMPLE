@@ -1,4 +1,4 @@
 {
-  "sabbat": "scrypt:32768:8:1$iDVviIQrVTUXrcjE$f5a6dbbd0c2367738fb11d520cde3284abf4ca3ecf7aa604c9a528a453221bb134a7e54d1dca4d07fb67771e4c12439ad465d1f1170145a0467074f9a4128b2d",
-  "otro_usuario": "pbkdf2:sha256:600000$otro_hash_generado$..."
+  "sabbat": "YOUR HASH",
+  "otro_usuario": "YOUR HASH"
 }
