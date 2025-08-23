@@ -1,0 +1,9 @@
+flask
+python-dotenv
+google-generativeai
+groq
+openai
+flask-limiter
+anthropic
+mistralai==0.4.2
+waitress

@@ -1,0 +1,51 @@
+{
+  "models": [
+    {
+      "name": "Gemini 1.5 Flash",
+      "enabled": true,
+      "module_path": "ai_models.gemini",
+      "class_name": "GeminiModel",
+      "model_name_api": "gemini-1.5-flash-latest",
+      "api_key_env": "GEMINI_API_KEY"
+    },
+    {
+      "name": "Claude 3.5 Sonnet",
+      "enabled": false,
+      "module_path": "ai_models.claude",
+      "class_name": "ClaudeModel",
+      "model_name_api": "claude-3-5-sonnet-20240620",
+      "api_key_env": "ANTHROPIC_API_KEY"
+    },
+    {
+      "name": "Qwen 72b (Groq)",
+      "enabled": false,
+      "module_path": "ai_models.groq_qwen",
+      "class_name": "GroqQwenModel",
+      "model_name_api": "qwen-72b-chat",
+      "api_key_env": "GROQ_API_KEY"
+    },
+    {
+      "name": "DeepSeek Chat",
+      "enabled": true,
+      "module_path": "ai_models.deepseek",
+      "class_name": "DeepSeekModel",
+      "model_name_api": "deepseek-chat",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "base_url": "https://api.deepseek.com"
+    },
+    {
+      "name": "Codestral (Mistral)",
+      "enabled": true,
+      "module_path": "ai_models.mistral",
+      "class_name": "MistralModel",
+      "model_name_api": "codestral-latest",
+      "api_key_env": "MISTRAL_API_KEY"
+    },
+    {
+      "name": "Mock AI (Pruebas)",
+      "enabled": true,
+      "module_path": "ai_models.mock",
+      "class_name": "MockModel"
+    }
+  ]
+}

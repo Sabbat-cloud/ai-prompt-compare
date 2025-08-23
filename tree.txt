@@ -1,0 +1,19 @@
+Estructura del Proyecto
+ia-prompt-compare/
+│
+├── app.py                 # Fichero principal de la aplicación Flask
+├── models.json            # Configuración de los modelos de IA
+├── .env                   # Fichero para las claves de API (¡No subir a Git!)
+├── .env.EXAMPLE           # Ejemplo de fichero de entorno
+├── requirements.txt       # Dependencias de Python
+│
+├── ai_models/             # Directorio para los conectores de cada IA
+│   ├── init.py
+│   ├── base_model.py      # Clase base abstracta para los modelos
+│   ├── gemini.py
+│   ├── groq_qwen.py
+│   ├── deepseek.py
+│   └── mock.py
+│
+└── templates/             # Plantillas HTML de Flask
+└── index.html
