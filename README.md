@@ -30,8 +30,8 @@ API keys for the AI models you wish to use (Gemini, Mistral, DeepSeek, etc.).
 2. Clone the Repository
 Bash
 
-git clone https://github.com/your_username/ia-prompt-compare.git
-cd ia-prompt-compare
+git clone https://github.com/your_username/ai-prompt-compare.git
+cd ai-prompt-compare
 3. Create and Activate a Virtual Environment
 It is a best practice to use a virtual environment to isolate project dependencies.
 
@@ -136,21 +136,21 @@ Create a new service file for the application:
 
 Bash
 
-sudo nano /etc/systemd/system/ia-prompt-compare.service
+sudo nano /etc/systemd/system/ai-prompt-compare.service
 2. Add the Service Configuration
 Paste the following content into the file. Make sure to replace YOUR_USER and the paths in WorkingDirectory and ExecStart with the correct values for your system.
 
 Ini, TOML
 
 [Unit]
-Description=IA Prompt Compare Application
+Description=AI Prompt Compare Application
 After=network.target
 
 [Service]
 User=YOUR_USER
 Group=www-data # Or your user's group
-WorkingDirectory=/absolute/path/to/ia-prompt-compare
-ExecStart=/absolute/path/to/ia-prompt-compare/venv/bin/python app.py
+WorkingDirectory=/absolute/path/to/ai-prompt-compare
+ExecStart=/absolute/path/to/ai-prompt-compare/venv/bin/python app.py
 Restart=always
 
 [Install]
@@ -170,10 +170,10 @@ Bash
 sudo systemctl daemon-reload
 
 # Enable the service to start on boot
-sudo systemctl enable ia-prompt-compare.service
+sudo systemctl enable ai-prompt-compare.service
 
 # Start the service immediately
-sudo systemctl start ia-prompt-compare.service
+sudo systemctl start ai-prompt-compare.service
 4. Check the Service Status
 You can check if the service is running correctly with the following command:
 

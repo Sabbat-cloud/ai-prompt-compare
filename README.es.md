@@ -1,6 +1,6 @@
 README.es.md (Español)
-🚀 IA-Prompt-Compare
-IA-Prompt-Compare es una potente aplicación web construida con Flask que te permite interactuar con múltiples modelos de lenguaje de IA de forma simultánea. Ha sido diseñada para desarrolladores, investigadores y entusiastas de la IA que deseen comparar el rendimiento de diferentes modelos o crear conversaciones complejas entre ellos.
+🚀 AI-Prompt-Compare
+AI-Prompt-Compare es una potente aplicación web construida con Flask que te permite interactuar con múltiples modelos de lenguaje de IA de forma simultánea. Ha sido diseñada para desarrolladores, investigadores y entusiastas de la IA que deseen comparar el rendimiento de diferentes modelos o crear conversaciones complejas entre ellos.
 
 La aplicación cuenta con una interfaz de usuario intuitiva y dos modos de operación principales para explorar las capacidades de los modelos de IA más avanzados.
 
@@ -30,8 +30,8 @@ Claves de API para los modelos de IA que desees utilizar (Gemini, Mistral, DeepS
 2. Clonar el Repositorio
 Bash
 
-git clone https://github.com/tu_usuario/ia-prompt-compare.git
-cd ia-prompt-compare
+git clone https://github.com/tu_usuario/ai-prompt-compare.git
+cd ai-prompt-compare
 3. Crear y Activar un Entorno Virtual
 Es una buena práctica utilizar un entorno virtual para aislar las dependencias del proyecto.
 
@@ -143,14 +143,14 @@ Pega el siguiente contenido en el fichero. Asegúrate de reemplazar TU_USUARIO y
 Ini, TOML
 
 [Unit]
-Description=IA Prompt Compare Application
+Description=AIPrompt Compare Application
 After=network.target
 
 [Service]
 User=TU_USUARIO
 Group=www-data # O el grupo de tu usuario
-WorkingDirectory=/ruta/absoluta/a/ia-prompt-compare
-ExecStart=/ruta/absoluta/a/ia-prompt-compare/venv/bin/python app.py
+WorkingDirectory=/ruta/absoluta/a/ai-prompt-compare
+ExecStart=/ruta/absoluta/a/ai-prompt-compare/venv/bin/python app.py
 Restart=always
 
 [Install]
@@ -171,16 +171,16 @@ Bash
 sudo systemctl daemon-reload
 
 # Habilitar el servicio para que se inicie en el arranque
-sudo systemctl enable ia-prompt-compare.service
+sudo systemctl enable ai-prompt-compare.service
 
 # Iniciar el servicio ahora mismo
-sudo systemctl start ia-prompt-compare.service
+sudo systemctl start ai-prompt-compare.service
 4. Verificar el Estado del Servicio
 Puedes comprobar si el servicio se está ejecutando correctamente con el siguiente comando:
 
 Bash
 
-sudo systemctl status ia-prompt-compare.service
+sudo systemctl status ai-prompt-compare.service
 Si todo ha ido bien, deberías ver un estado active (running).
 
 📄 Licencia
