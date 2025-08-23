@@ -179,7 +179,7 @@ You can check if the service is running correctly with the following command:
 
 Bash
 
-sudo systemctl status ia-prompt-compare.service
+sudo systemctl status ai-prompt-compare.service
 If everything went well, you should see an active (running) status.
 
 📄 License
