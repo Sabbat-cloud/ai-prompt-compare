@@ -128,5 +128,59 @@ Bash
 python app.py
 La aplicación estará disponible en http://0.0.0.0:3556. Cuando accedas desde tu navegador, se te pedirá un nombre de usuario y contraseña.
 
+⚙️ (Avanzado) Configurar como un Servicio del Sistema (Linux con systemd)
+Para que la aplicación se ejecute de forma continua en un servidor y se reinicie automáticamente, puedes configurarla como un servicio de systemd.
+
+1. Crear el Fichero de Servicio
+Crea un nuevo fichero de servicio para la aplicación:
+
+Bash
+
+sudo nano /etc/systemd/system/ia-prompt-compare.service
+2. Añadir la Configuración del Servicio
+Pega el siguiente contenido en el fichero. Asegúrate de reemplazar TU_USUARIO y la ruta en WorkingDirectory y ExecStart con los valores correctos de tu sistema.
+
+Ini, TOML
+
+[Unit]
+Description=IA Prompt Compare Application
+After=network.target
+
+[Service]
+User=TU_USUARIO
+Group=www-data # O el grupo de tu usuario
+WorkingDirectory=/ruta/absoluta/a/ia-prompt-compare
+ExecStart=/ruta/absoluta/a/ia-prompt-compare/venv/bin/python app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+User: El usuario con el que se ejecutará el servicio (no se recomienda root).
+
+WorkingDirectory: La ruta completa al directorio raíz del proyecto.
+
+ExecStart: La ruta completa al ejecutable de Python dentro del entorno virtual, seguido de app.py.
+
+3. Habilitar e Iniciar el Servicio
+Una vez guardado el fichero, recarga el demonio de systemd, habilita el servicio para que se inicie con el sistema y arráncalo.
+
+Bash
+
+# Recargar systemd para que lea el nuevo fichero
+sudo systemctl daemon-reload
+
+# Habilitar el servicio para que se inicie en el arranque
+sudo systemctl enable ia-prompt-compare.service
+
+# Iniciar el servicio ahora mismo
+sudo systemctl start ia-prompt-compare.service
+4. Verificar el Estado del Servicio
+Puedes comprobar si el servicio se está ejecutando correctamente con el siguiente comando:
+
+Bash
+
+sudo systemctl status ia-prompt-compare.service
+Si todo ha ido bien, deberías ver un estado active (running).
+
 📄 Licencia
 Este proyecto está bajo la Licencia MIT.

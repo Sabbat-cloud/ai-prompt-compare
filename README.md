@@ -128,5 +128,59 @@ Bash
 python app.py
 The application will be available at http://0.0.0.0:3556. When you access it from your browser, you will be prompted for a username and password.
 
+⚙️ (Advanced) Set Up as a System Service (Linux with systemd)
+To run the application continuously on a server and have it restart automatically, you can configure it as a systemd service.
+
+1. Create the Service File
+Create a new service file for the application:
+
+Bash
+
+sudo nano /etc/systemd/system/ia-prompt-compare.service
+2. Add the Service Configuration
+Paste the following content into the file. Make sure to replace YOUR_USER and the paths in WorkingDirectory and ExecStart with the correct values for your system.
+
+Ini, TOML
+
+[Unit]
+Description=IA Prompt Compare Application
+After=network.target
+
+[Service]
+User=YOUR_USER
+Group=www-data # Or your user's group
+WorkingDirectory=/absolute/path/to/ia-prompt-compare
+ExecStart=/absolute/path/to/ia-prompt-compare/venv/bin/python app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+User: The user that will run the service (running as root is not recommended).
+
+WorkingDirectory: The full path to the project's root directory.
+
+ExecStart: The full path to the Python executable inside the virtual environment, followed by app.py.
+
+3. Enable and Start the Service
+Once you have saved the file, reload the systemd daemon, enable the service to start on boot, and then start it.
+
+Bash
+
+# Reload systemd to read the new file
+sudo systemctl daemon-reload
+
+# Enable the service to start on boot
+sudo systemctl enable ia-prompt-compare.service
+
+# Start the service immediately
+sudo systemctl start ia-prompt-compare.service
+4. Check the Service Status
+You can check if the service is running correctly with the following command:
+
+Bash
+
+sudo systemctl status ia-prompt-compare.service
+If everything went well, you should see an active (running) status.
+
 📄 License
 This project is licensed under the MIT License.
