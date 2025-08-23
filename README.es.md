@@ -155,6 +155,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+
 User: El usuario con el que se ejecutará el servicio (no se recomienda root).
 
 WorkingDirectory: La ruta completa al directorio raíz del proyecto.
