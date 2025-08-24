@@ -86,6 +86,8 @@ def login_required(f):
     def decorated(*args, **kwargs):
         auth = request.authorization
         if not auth or not check_auth(auth.username, auth.password):
+            #Registra el intento de login fallido con la ip atacante
+            logger.warning(f"Failed login attempt for user '{auth.username if auth else 'None'}' from IP: {get_remote_address()}")
             return authenticate()
         return f(*args, **kwargs)
     return decorated
