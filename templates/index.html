@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA-Prompt-Compare</title>
+    <title>{{ _('IA-Prompt-Compare') }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -35,34 +35,34 @@
 <body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
 
     <header class="bg-gray-800 shadow-md p-4">
-        <h1 class="text-2xl font-bold text-center text-white">🚀 IA-Prompt-Compare</h1>
-        <p class="text-center text-gray-400">Compara respuestas o haz que las IAs conversen entre ellas.</p>
+        <h1 class="text-2xl font-bold text-center text-white">🚀 {{ _('IA-Prompt-Compare') }}</h1>
+        <p class="text-center text-gray-400">{{ _('Compara respuestas o haz que las IAs conversen entre ellas.') }}</p>
     </header>
 
     <main class="flex-grow container mx-auto p-4 md:p-6">
         
         <div class="bg-gray-800 rounded-lg p-6 shadow-xl mb-6">
             <div class="flex items-center justify-center mb-4">
-                <span class="mr-3 font-medium text-white">Modo Comparar</span>
+                <span class="mr-3 font-medium text-white">{{ _('Modo Comparar') }}</span>
                 <label class="switch">
                     <input type="checkbox" id="mode-toggle">
                     <span class="slider"></span>
                 </label>
-                <span class="ml-3 font-medium text-white">Modo Conversación</span>
+                <span class="ml-3 font-medium text-white">{{ _('Modo Conversación') }}</span>
             </div>
 
-            <label for="prompt-input" class="block text-lg font-medium mb-2 text-white">Introduce tu pregunta o prompt inicial:</label>
-            <textarea id="prompt-input" rows="4" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" placeholder="Ej: ¿Qué es un agujero negro?"></textarea>
+            <label for="prompt-input" class="block text-lg font-medium mb-2 text-white">{{ _('Introduce tu pregunta o prompt inicial:') }}</label>
+            <textarea id="prompt-input" rows="4" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" placeholder="{{ _('Ej: ¿Qué es un agujero negro?') }}"></textarea>
             
             <div class="mt-4 border-t border-gray-700 pt-4">
-                <h3 class="text-md font-semibold text-center mb-3 text-white">Opciones Avanzadas (Opcional)</h3>
+                <h3 class="text-md font-semibold text-center mb-3 text-white">{{ _('Opciones Avanzadas (Opcional)') }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label for="temperature-slider" class="block text-sm font-medium text-gray-300">Temperatura: <span id="temperature-value">0.7</span></label>
+                        <label for="temperature-slider" class="block text-sm font-medium text-gray-300">{{ _('Temperatura:') }} <span id="temperature-value">0.7</span></label>
                         <input id="temperature-slider" type="range" min="0" max="2" step="0.1" value="0.7" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer">
                     </div>
                     <div>
-                        <label for="max-tokens-slider" class="block text-sm font-medium text-gray-300">Max Tokens: <span id="max-tokens-value">1024</span></label>
+                        <label for="max-tokens-slider" class="block text-sm font-medium text-gray-300">{{ _('Max Tokens:') }} <span id="max-tokens-value">1024</span></label>
                         <input id="max-tokens-slider" type="range" min="256" max="4096" step="256" value="1024" class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer">
                     </div>
                 </div>
@@ -70,7 +70,7 @@
             
             <div class="mt-6 text-center">
                 <button id="submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center mx-auto">
-                    <span id="btn-text">Ejecutar</span>
+                    <span id="btn-text">{{ _('Ejecutar') }}</span>
                     <div id="loader" class="loader hidden ml-3"></div>
                 </button>
             </div>
@@ -113,7 +113,7 @@
                         compareContainer.innerHTML += cardHTML;
                     });
                 } else {
-                    compareContainer.innerHTML = `<div class="bg-yellow-900 text-yellow-200 p-4 rounded-lg col-span-full">No se han encontrado modelos de IA configurados.</div>`;
+                    compareContainer.innerHTML = `<div class="bg-yellow-900 text-yellow-200 p-4 rounded-lg col-span-full">{{ _('No se han encontrado modelos de IA configurados.') }}</div>`;
                 }
             }
             
@@ -122,7 +122,7 @@
             submitBtn.addEventListener('click', async () => {
                 const prompt = promptInput.value.trim();
                 if (!prompt) {
-                    alert('Por favor, introduce un prompt.');
+                    alert('{{ _("Por favor, introduce un prompt.") }}');
                     return;
                 }
 
@@ -130,7 +130,7 @@
                 const max_tokens = parseInt(maxTokensSlider.value, 10);
                 const options = { temperature, max_tokens };
 
-                btnText.textContent = 'Procesando...';
+                btnText.textContent = '{{ _("Procesando...") }}';
                 loader.classList.remove('hidden');
                 submitBtn.disabled = true;
 
@@ -149,7 +149,7 @@
                     await handleCompare(prompt, options);
                 }
 
-                btnText.textContent = 'Ejecutar';
+                btnText.textContent = '{{ _("Ejecutar") }}';
                 loader.classList.add('hidden');
                 submitBtn.disabled = false;
             });
@@ -158,16 +158,13 @@
                 try {
                     const response = await fetch('/compare', {
                         method: 'POST',
-                        // SOLUCIÓN: Esta línea le dice al navegador que envíe las credenciales
-                        // que ya tiene guardadas para este dominio (el usuario y contraseña).
                         credentials: 'same-origin', 
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ prompt, options }),
                     });
                     if (!response.ok) {
-                        // Si el error es 401, el servidor sigue denegando el acceso.
                         if (response.status === 401) {
-                            alert('Error de autenticación. Por favor, recarga la página e introduce las credenciales correctas.');
+                            alert('{{ _("Error de autenticación. Por favor, recarga la página e introduce las credenciales correctas.") }}');
                         }
                         throw new Error(`Error del servidor: ${response.statusText}`);
                     }
@@ -181,9 +178,8 @@
                     }
                 } catch (error) {
                     console.error('Error en modo Comparar:', error);
-                    // No mostramos el alert genérico si ya mostramos el de 401
                     if (!error.message.includes('401')) {
-                        alert('Ocurrió un error en modo Comparar.');
+                        alert('{{ _("Ocurrió un error en modo Comparar.") }}');
                     }
                 }
             }
@@ -192,14 +188,13 @@
                 try {
                     const response = await fetch('/conversation', {
                         method: 'POST',
-                        // SOLUCIÓN: Esta línea le dice al navegador que envíe las credenciales.
                         credentials: 'same-origin',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ prompt, options }),
                     });
                      if (!response.ok) {
                         if (response.status === 401) {
-                            alert('Error de autenticación. Por favor, recarga la página e introduce las credenciales correctas.');
+                            alert('{{ _("Error de autenticación. Por favor, recarga la página e introduce las credenciales correctas.") }}');
                         }
                         throw new Error(`Error del servidor: ${response.statusText}`);
                     }
@@ -213,9 +208,9 @@
                                 <h2 class="text-xl font-semibold ml-3 text-white">${step.model_name}</h2>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-gray-400 mb-1">Recibió el prompt:</h3>
+                                <h3 class="font-semibold text-gray-400 mb-1">{{ _('Recibió el prompt:') }}</h3>
                                 <p class="text-sm bg-gray-700 p-3 rounded-md mb-3 whitespace-pre-wrap max-h-40 overflow-y-auto">${step.prompt}</p>
-                                <h3 class="font-semibold text-green-400 mb-1">Y respondió:</h3>
+                                <h3 class="font-semibold text-green-400 mb-1">{{ _('Y respondió:') }}</h3>
                                 <p class="text-gray-300 bg-gray-900 p-3 rounded-md whitespace-pre-wrap">${step.response}</p>
                             </div>
                         </div>`;
@@ -225,7 +220,7 @@
                 } catch (error) {
                     console.error('Error en modo Conversación:', error);
                     if (!error.message.includes('401')) {
-                        alert('Ocurrió un error en modo Conversación.');
+                        alert('{{ _("Ocurrió un error en modo Conversación.") }}');
                     }
                 }
             }

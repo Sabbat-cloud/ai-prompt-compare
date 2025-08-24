@@ -8,7 +8,6 @@ from datetime import datetime
 from collections import defaultdict
 from importlib import import_module
 from functools import lru_cache, wraps
-
 from flask import Flask, render_template, request, jsonify, Response
 from dotenv import load_dotenv
 from flask_limiter import Limiter
@@ -16,10 +15,32 @@ from flask_limiter.util import get_remote_address
 import concurrent.futures
 from werkzeug.security import check_password_hash
 from waitress import serve
+# MODIFICADO: Importaciones de Babel y request
+from flask_babel import Babel, _
 
 # --- Configuración Inicial ---
 load_dotenv()
 app = Flask(__name__)
+
+# --- INICIO DE MODIFICACIONES PARA BABEL ---
+
+# 1. Configuración de idiomas para Babel
+app.config['LANGUAGES'] = {
+    'en': 'English',
+    'es': 'Español'
+}
+app.config['BABEL_DEFAULT_LOCALE'] = 'es'
+
+# 2. Función para seleccionar el idioma en cada petición
+def get_locale():
+    # Usa el idioma que mejor coincida del header 'Accept-Language' del navegador
+    return request.accept_languages.best_match(app.config['LANGUAGES'].keys())
+
+# 3. Inicialización de Babel pasando la función anterior
+babel = Babel(app, locale_selector=get_locale)
+
+# --- FIN DE MODIFICACIONES PARA BABEL ---
+
 
 # Configurar Logging
 logging.basicConfig(level=logging.INFO,
@@ -68,6 +89,12 @@ def login_required(f):
             return authenticate()
         return f(*args, **kwargs)
     return decorated
+
+# --- ELIMINADO ---
+# Se borra el bloque duplicado y obsoleto de 'get_locale' que estaba aquí.
+# @babel.localeselector
+# def get_locale():
+# ...
 
 # --- Sistema de Métricas ---
 class Metrics:

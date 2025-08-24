@@ -1,0 +1,95 @@
+# English translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-08-24 12:18+0200\n"
+"PO-Revision-Date: 2025-08-24 12:21+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: templates/index.html:10 templates/index.html:43
+msgid "IA-Prompt-Compare"
+msgstr "AI-Prompt-Compare"
+
+#: templates/index.html:44
+msgid "Compara respuestas o haz que las IAs conversen entre ellas."
+msgstr "Compare responses or make the AIs converse with each other."
+
+#: templates/index.html:50
+msgid "Modo Comparar"
+msgstr "Compare Mode"
+
+#: templates/index.html:54
+msgid "Modo Conversación"
+msgstr "Conversation Mode"
+
+#: templates/index.html:57
+msgid "Introduce tu pregunta o prompt inicial:"
+msgstr "Enter your question or initial prompt:"
+
+#: templates/index.html:58
+msgid "Ej: ¿Qué es un agujero negro?"
+msgstr "Ex: What is a black hole?"
+
+#: templates/index.html:61
+msgid "Opciones Avanzadas (Opcional)"
+msgstr "Advanced Options (Optional)"
+
+#: templates/index.html:64
+msgid "Temperatura:"
+msgstr "Temperature:"
+
+#: templates/index.html:68
+msgid "Max Tokens:"
+msgstr "Max Tokens:"
+
+#: templates/index.html:74 templates/index.html:127
+msgid "Ejecutar"
+msgstr "Execute"
+
+#: templates/index.html:98
+msgid "No se han encontrado modelos de IA configurados."
+msgstr "No configured AI models were found."
+
+#: templates/index.html:108
+msgid "Por favor, introduce un prompt."
+msgstr "Please, enter a prompt."
+
+#: templates/index.html:114
+msgid "Procesando..."
+msgstr "Processing..."
+
+#: templates/index.html:137 templates/index.html:164
+msgid ""
+"Error de autenticación. Por favor, recarga la página e introduce las "
+"credenciales correctas."
+msgstr ""
+"Authentication error. Please, reload the page and enter the correct "
+"credentials."
+
+#: templates/index.html:148
+msgid "Ocurrió un error en modo Comparar."
+msgstr "An error occurred in Compare mode."
+
+#: templates/index.html:175
+msgid "Ocurrió un error en modo Conversación."
+msgstr "An error occurred in Conversation mode."
+
+#: templates/index.html:187
+msgid "Recibió el prompt:"
+msgstr "Received prompt:"
+
+#: templates/index.html:189
+msgid "Y respondió:"
+msgstr "And responded:"
